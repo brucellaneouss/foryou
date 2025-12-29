@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Angel 💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        /* Page 1: Entry Page */
+        #entry-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #entry-page.hidden {
+            opacity: 0;
+            transform: scale(1.3);
+            pointer-events: none;
+        }
+
+        /* Aesthetic Button */
+        .surprise-button {
+            padding: 22px 48px;
+            font-size: 26px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff9ec0, #ff6b9d);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 
+                0 15px 35px rgba(255, 107, 157, 0.25),
+                0 5px 15px rgba(255, 107, 157, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+        }
+
+        .surprise-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 
+                0 25px 45px rgba(255, 107, 157, 0.35),
+                0 10px 25px rgba(255, 107, 157, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .surprise-button:active {
+            transform: translateY(-2px);
+        }
+
+        .surprise-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .surprise-button:hover::before {
+            left: 100%;
+        }
+
+        /* Page 2: Surprise Page */
+        #surprise-page {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, 
+                #fff5f8 0%, 
+                #ffeef5 25%, 
+                #f8f0ff 50%, 
+                #f0f5ff 75%, 
+                #fff8f0 100%);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            opacity: 0;
+            animation: pageFadeIn 2s ease forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes pageFadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Background Decorative Elements */
+        .floating-element {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .sparkle {
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+            animation: sparkleFloat 8s infinite ease-in-out;
+        }
+
+        .light-particle {
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: particleFloat 10s infinite ease-in-out;
+        }
+
+        @keyframes sparkleFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-40px) rotate(180deg); opacity: 0.9; }
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.2; }
+            33% { transform: translateY(-30px) translateX(15px); opacity: 0.6; }
+            66% { transform: translateY(-15px) translateX(-15px); opacity: 0.4; }
+        }
+
+        /* FLOWER PETALS - ENHANCED FOR OVERLAY */
+        .petal {
+            position: absolute;
+            background: linear-gradient(135deg, 
+                rgba(255, 182, 217, 0.9), 
+                rgba(255, 128, 191, 0.7));
+            border-radius: 50% 0 50% 50%;
+            transform: rotate(45deg);
+            filter: blur(0.5px);
+            animation: petalFall linear infinite;
+            z-index: 8; /* Increased z-index to overlay photos */
+            pointer-events: none;
+            /* Soft shadow for depth */
+            box-shadow: 0 2px 8px rgba(255, 128, 191, 0.3);
+        }
+
+        /* Different petal shapes for variety */
+        .petal.round {
+            border-radius: 50%;
+        }
+
+        .petal.heart {
+            border-radius: 50% 50% 0 50%;
+            transform: rotate(45deg) scale(0.8);
+        }
+
+        @keyframes petalFall {
+            0% {
+                transform: rotate(45deg) translateY(-20px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(100vh) rotate(405deg);
+                opacity: 0;
+            }
+        }
+
+        /* Bouquet Decorations */
+        .bouquet {
+            position: absolute;
+            z-index: 9;
+            opacity: 0.7;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+            pointer-events: none;
+        }
+
+        .bouquet.left-top {
+            top: 10px;
+            left: 10px;
+            transform: rotate(-10deg) scale(0.8);
+            animation: bouquetFloat 25s infinite ease-in-out;
+        }
+
+        .bouquet.right-bottom {
+            bottom: 10px;
+            right: 10px;
+            transform: rotate(15deg) scale(0.8);
+            animation: bouquetFloat 30s infinite ease-in-out reverse;
+        }
+
+        @keyframes bouquetFloat {
+            0%, 100% { transform: rotate(-10deg) scale(0.8); }
+            50% { transform: rotate(-5deg) scale(0.85); }
+        }
+
+        /* Greeting Text */
+        .greeting-container {
+            text-align: center;
+            margin-bottom: 30px;
+            z-index: 10;
+            padding: 0 20px;
+            max-width: 800px;
+            opacity: 0;
+            animation: textGlow 4s infinite alternate, textFadeIn 1.5s ease forwards;
+            animation-delay: 1s;
+            position: relative;
+            top: 0;
+        }
+
+        .greeting {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: #ff3385;
+            text-shadow: 
+                2px 2px 8px rgba(255, 51, 133, 0.2),
+                0 0 40px rgba(255, 51, 133, 0.1);
+            margin-bottom: 15px;
+            line-height: 1.1;
+            font-weight: 700;
+        }
+
+        .name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.8rem;
+            color: #cc0066;
+            text-shadow: 
+                1px 1px 6px rgba(204, 0, 102, 0.2),
+                0 0 30px rgba(204, 0, 102, 0.1);
+            font-weight: 700;
+        }
+
+        @keyframes textFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes textGlow {
+            from { text-shadow: 2px 2px 8px rgba(255, 51, 133, 0.2), 0 0 40px rgba(255, 51, 133, 0.1); }
+            to { text-shadow: 4px 4px 16px rgba(255, 51, 133, 0.4), 0 0 60px rgba(255, 51, 133, 0.2); }
+        }
+
+        /* Rolling Photo Video Grid - MAIN FEATURE */
+        .photo-grid-container {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            overflow: hidden;
+            z-index: 5; /* Lower than petals */
+            margin-top: 20px;
+        }
+
+        /* Gradient overlays for cinematic effect */
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 7;
+        }
+
+        .overlay-left {
+            background: linear-gradient(to right, 
+                rgba(255, 245, 248, 0.8) 0%, 
+                rgba(255, 245, 248, 0.4) 10%, 
+                transparent 30%);
+        }
+
+        .overlay-right {
+            background: linear-gradient(to left, 
+                rgba(255, 245, 248, 0.8) 0%, 
+                rgba(255, 245, 248, 0.4) 10%, 
+                transparent 30%);
+        }
+
+        .overlay-top {
+            background: linear-gradient(to bottom, 
+                rgba(255, 245, 248, 0.8) 0%, 
+                transparent 20%);
+        }
+
+        .overlay-bottom {
+            background: linear-gradient(to top, 
+                rgba(255, 245, 248, 0.8) 0%, 
+                transparent 20%);
+        }
+
+        /* The rolling grid */
+        .photo-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%; /* Double width for seamless loop */
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr); /* 10 columns for the duplicate */
+            grid-template-rows: repeat(2, 1fr); /* 2 rows for 20 photos */
+            gap: 0; /* NO GAPS - seamless video wall */
+            animation: rollGrid 120s linear infinite; /* Slow, cinematic speed */
+            animation-play-state: running;
+        }
+
+        /* Slower animation on hover */
+        .photo-grid:hover {
+            animation-duration: 180s;
+        }
+
+        @keyframes rollGrid {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%); /* Move half width to loop */
+            }
+        }
+
+        /* Individual photo cells */
+        .photo-cell {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            animation: gentleZoom 20s infinite alternate ease-in-out;
+            animation-delay: calc(var(--i) * -1s);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1); /* Subtle cell border */
+            z-index: 5; /* Lower than petals */
+        }
+
+        /* Unique animation delay for each cell */
+        .photo-cell:nth-child(1) { --i: 0; }
+        .photo-cell:nth-child(2) { --i: 1; }
+        .photo-cell:nth-child(3) { --i: 2; }
+        .photo-cell:nth-child(4) { --i: 3; }
+        .photo-cell:nth-child(5) { --i: 4; }
+        .photo-cell:nth-child(6) { --i: 5; }
+        .photo-cell:nth-child(7) { --i: 6; }
+        .photo-cell:nth-child(8) { --i: 7; }
+        .photo-cell:nth-child(9) { --i: 8; }
+        .photo-cell:nth-child(10) { --i: 9; }
+        .photo-cell:nth-child(11) { --i: 10; }
+        .photo-cell:nth-child(12) { --i: 11; }
+        .photo-cell:nth-child(13) { --i: 12; }
+        .photo-cell:nth-child(14) { --i: 13; }
+        .photo-cell:nth-child(15) { --i: 14; }
+        .photo-cell:nth-child(16) { --i: 15; }
+        .photo-cell:nth-child(17) { --i: 16; }
+        .photo-cell:nth-child(18) { --i: 17; }
+        .photo-cell:nth-child(19) { --i: 18; }
+        .photo-cell:nth-child(20) { --i: 19; }
+
+        @keyframes gentleZoom {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .photo-cell:hover {
+            transform: scale(1.08) !important;
+            z-index: 6; /* Slightly higher on hover, but still under petals */
+            filter: brightness(1.1);
+            box-shadow: 0 0 30px rgba(255, 107, 157, 0.3);
+        }
+
+        /* Actual image styling */
+        .memory-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-cell:hover .memory-image {
+            transform: scale(1.05);
+        }
+
+        /* Loading overlay for images */
+        .image-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f8f0ff, #f0f5ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgba(0, 0, 0, 0.3);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        .image-loading::before {
+            content: '💖';
+            position: absolute;
+            font-size: 2.5rem;
+            opacity: 0.15;
+            animation: placeholderFloat 10s infinite ease-in-out;
+        }
+
+        @keyframes placeholderFloat {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        /* Ambient Background Animation */
+        .ambient-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .light-beam {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, 
+                rgba(255, 255, 255, 0.15) 0%, 
+                rgba(255, 255, 255, 0) 70%);
+            animation: beamRotate 80s infinite linear;
+        }
+
+        @keyframes beamRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Breathing Animation for Container */
+        .photo-grid-container {
+            animation: gentleBreathing 10s infinite ease-in-out;
+        }
+
+        @keyframes gentleBreathing {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.01); }
+        }
+
+        /* Petals Container - Positioned to overlay photos */
+        #petals-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 8; /* Higher than photo grid */
+        }
+
+        /* Special petal overlay for grid area */
+        .grid-petal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60vh; /* Same as photo grid */
+            pointer-events: none;
+            z-index: 8;
+            margin-top: 20px;
+        }
+
+        /* Image loading progress */
+        .loading-progress {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            display: none;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 10px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            margin: 15px auto;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff9ec0, #ff6b9d);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .greeting {
+                font-size: 3.5rem;
+            }
+            .name {
+                font-size: 3rem;
+            }
+            .photo-grid-container {
+                height: 55vh;
+            }
+            .photo-grid {
+                grid-template-columns: repeat(10, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+            }
+            .grid-petal-overlay {
+                height: 55vh;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .greeting {
+                font-size: 2.8rem;
+            }
+            .name {
+                font-size: 2.4rem;
+            }
+            .photo-grid-container {
+                height: 50vh;
+            }
+            .photo-grid {
+                grid-template-columns: repeat(5, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                width: 400%; /* Adjust for mobile layout */
+            }
+            
+            @keyframes rollGrid {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(-25%); /* Adjust for mobile */
+                }
+            }
+            
+            .bouquet {
+                transform: scale(0.6);
+            }
+            .grid-petal-overlay {
+                height: 50vh;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .greeting {
+                font-size: 2.2rem;
+            }
+            .name {
+                font-size: 1.9rem;
+            }
+            .photo-grid-container {
+                height: 45vh;
+            }
+            .surprise-button {
+                padding: 18px 36px;
+                font-size: 20px;
+            }
+            .photo-grid {
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(5, 1fr);
+                width: 400%;
+            }
+            .bouquet {
+                display: none;
+            }
+            .grid-petal-overlay {
+                height: 45vh;
+            }
+        }
+
+        /* Music Controls (Commented Out) */
+        .music-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .music-controls:hover {
+            opacity: 1;
+        }
+
+        .music-btn {
+            padding: 10px 20px;
+            background: rgba(255, 107, 157, 0.9);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.05);
+            background: rgba(255, 107, 157, 1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Progress Bar -->
+    <div class="loading-progress" id="loading-progress">
+        <h3>Loading Beautiful Memories...</h3>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <p id="progress-text">0/20 images loaded</p>
+    </div>
+
+    <!-- Page 1: Entry Page -->
+    <div id="entry-page">
+        <button class="surprise-button" id="surprise-btn">Its your dayyy!💕</button>
+    </div>
+
+    <!-- Page 2: Surprise Page -->
+    <div id="surprise-page">
+        <!-- Ambient Background Animation -->
+        <div class="ambient-bg">
+            <div class="light-beam"></div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div id="floating-elements"></div>
+
+        <!-- Flower Petals Container (separate from main petals for better control) -->
+        <div id="petals-container"></div>
+
+        <!-- Special Petal Overlay for Grid Area -->
+        <div class="grid-petal-overlay" id="grid-petal-overlay"></div>
+
+        <!-- Bouquet Decorations -->
+        <div class="bouquet left-top">
+            <div style="font-size: 100px; color: #ff9ec0;">💐</div>
+        </div>
+        <div class="bouquet right-bottom">
+            <div style="font-size: 100px; color: #e6b0ff;">🌺</div>
+        </div>
+
+        <!-- Greeting Text -->
+        <div class="greeting-container">
+            <h1 class="greeting">Happy 22nd Birthday,</h1>
+            <h2 class="name">Mi Amoree❤️</h2>
+        </div>
+
+        <!-- Rolling Photo Video Grid -->
+        <div class="photo-grid-container">
+            <!-- Gradient Overlays -->
+            <div class="grid-overlay overlay-left"></div>
+            <div class="grid-overlay overlay-right"></div>
+            <div class="grid-overlay overlay-top"></div>
+            <div class="grid-overlay overlay-bottom"></div>
+            
+            <!-- The Rolling Grid -->
+            <div class="photo-grid" id="photo-grid">
+                <!-- Photo cells will be generated here -->
+            </div>
+        </div>
+
+        <!-- Music Controls (commented out by default) -->
+        <!--
+        <div class="music-controls">
+            <button class="music-btn" id="music-control">Play Music 🎵</button>
+            <audio id="background-music" loop>
+                <source src="romantic-music.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        -->
+    </div>
+
+    <script>
+        // DOM Elements
+        const entryPage = document.getElementById('entry-page');
+        const surprisePage = document.getElementById('surprise-page');
+        const surpriseBtn = document.getElementById('surprise-btn');
+        const floatingElements = document.getElementById('floating-elements');
+        const petalsContainer = document.getElementById('petals-container');
+        const gridPetalOverlay = document.getElementById('grid-petal-overlay');
+        const photoGrid = document.getElementById('photo-grid');
+        const loadingProgress = document.getElementById('loading-progress');
+        const progressFill = document.getElementById('progress-fill');
+        const progressText = document.getElementById('progress-text');
+
+        // Your 20 Memory Images with correct file extensions
+        // Based on your screenshots, here are the exact filenames:
+        const memoryImages = [
+            'memory-1.jpg',      // JPG File - 5,018 KB
+            'memory-2.jpg',      // JPG File - 253 KB
+            'memory-3.jpeg',     // JPEG File - 302 KB
+            'memory-4.jpg',      // JPG File - 4,211 KB
+            'memory-5.jpg',      // JPG File - 3,841 KB
+            'memory-6.jpeg',     // JPEG File - 63 KB
+            'memory-7.jpeg',     // JPEG File - 71 KB
+            'memory-8.jpeg',     // JPEG File - 64 KB
+            'memory-9.jpeg',     // JPEG File - 242 KB
+            'memory-10.jpeg',    // JPEG File - 257 KB
+            'memory-11.jpeg',    // JPEG File - 60 KB
+            'memory-12.jpeg',    // JPEG File - 59 KB
+            'memory-13.jpeg',    // JPEG File - 307 KB
+            'memory-14.jpg',     // JPG File - 417 KB
+            'memory-15.jpg',     // JPG File - 504 KB
+            'memory-16.jpg',     // JPG File - 284 KB
+            'memory-17.jpg',     // Note: You listed 17 in first screenshot but not in file list
+            'memory-18.jpeg',    // JPEG File - 466 KB
+            'memory-19.jpg',     // JPG File - 4,286 KB
+            'memory-20.webp'     // WEBP File - 665 KB
+        ];
+
+        // Image labels for each memory
+        const memoryLabels = [
+            "First Memory Together",
+            "That Beautiful Smile",
+            "Our Special Day",
+            "Forever Moments",
+            "Pure Happiness",
+            "Laughing Together",
+            "My Favorite Person",
+            "Perfect Day",
+            "Unforgettable Memory",
+            "Heart Full of Love",
+            "Cherished Moment",
+            "Beautiful Memories",
+            "Always by Your Side",
+            "My Everything",
+            "Endless Love",
+            "My Angel",
+            "Precious Times",
+            "Love Story",
+            "Happiest Moments",
+            "My Forever"
+        ];
+
+        // Image loading tracking
+        let loadedImages = 0;
+        const totalImages = memoryImages.length;
+
+        // Start preloading images immediately
+        preloadImages();
+
+        // Function to preload images and update progress
+        function preloadImages() {
+            loadingProgress.style.display = 'block';
+            surpriseBtn.disabled = true;
+            surpriseBtn.textContent = "Loading Memories...";
+            
+            // Try multiple extensions for each image
+            memoryImages.forEach((imageName, index) => {
+                const img = new Image();
+                
+                img.onload = () => {
+                    loadedImages++;
+                    updateProgress();
+                    
+                    if (loadedImages === totalImages) {
+                        setTimeout(() => {
+                            loadingProgress.style.display = 'none';
+                            // All images loaded, enable the surprise button
+                            surpriseBtn.disabled = false;
+                            surpriseBtn.textContent = "Click for a Surprise 💕";
+                            console.log("All images loaded successfully!");
+                        }, 500);
+                    }
+                };
+                
+                img.onerror = () => {
+                    console.warn(`Failed to load image: ${imageName}`);
+                    
+                    // Try alternative extensions
+                    const baseName = imageName.split('.')[0];
+                    const alternatives = [
+                        `${baseName}.jpg`,
+                        `${baseName}.jpeg`, 
+                        `${baseName}.png`,
+                        `${baseName}.webp`,
+                        `${baseName}.JPG`,
+                        `${baseName}.JPEG`
+                    ];
+                    
+                    // Try next alternative
+                    let currentTry = 1;
+                    const tryNextAlternative = () => {
+                        if (currentTry < alternatives.length) {
+                            img.src = alternatives[currentTry];
+                            currentTry++;
+                        } else {
+                            // All alternatives failed
+                            loadedImages++;
+                            updateProgress();
+                            console.error(`All alternatives failed for: ${baseName}`);
+                            
+                            if (loadedImages === totalImages) {
+                                setTimeout(() => {
+                                    loadingProgress.style.display = 'none';
+                                    surpriseBtn.disabled = false;
+                                    surpriseBtn.textContent = "Click for a Surprise 💕";
+                                }, 500);
+                            }
+                        }
+                    };
+                    
+                    // Set up error handler for alternative
+                    img.onerror = tryNextAlternative;
+                    tryNextAlternative();
+                };
+                
+                // Start loading the image
+                img.src = imageName;
+            });
+        }
+
+        // Update loading progress
+        function updateProgress() {
+            const percent = Math.round((loadedImages / totalImages) * 100);
+            progressFill.style.width = `${percent}%`;
+            progressText.textContent = `${loadedImages}/${totalImages} memories loaded`;
+        }
+
+        // Create floating elements (sparkles and light particles)
+        function createFloatingElements() {
+            const elementCount = 50;
+            
+            for (let i = 0; i < elementCount; i++) {
+                const element = document.createElement('div');
+                
+                if (Math.random() > 0.5) {
+                    element.className = 'floating-element sparkle';
+                    
+                    const size = Math.random() * 4 + 2;
+                    element.style.width = `${size}px`;
+                    element.style.height = `${size}px`;
+                    element.style.left = `${Math.random() * 100}%`;
+                    element.style.top = `${Math.random() * 100}%`;
+                    
+                    element.style.animationDuration = `${Math.random() * 10 + 8}s`;
+                    element.style.animationDelay = `${Math.random() * 5}s`;
+                } else {
+                    element.className = 'floating-element light-particle';
+                    
+                    const size = Math.random() * 6 + 4;
+                    element.style.width = `${size}px`;
+                    element.style.height = `${size}px`;
+                    element.style.left = `${Math.random() * 100}%`;
+                    element.style.top = `${Math.random() * 100}%`;
+                    
+                    element.style.animationDuration = `${Math.random() * 15 + 10}s`;
+                    element.style.animationDelay = `${Math.random() * 8}s`;
+                    
+                    // Random color for particles
+                    const hue = Math.random() * 60 + 300; // Pink/purple range
+                    element.style.backgroundColor = `hsla(${hue}, 100%, 80%, 0.5)`;
+                }
+                
+                floatingElements.appendChild(element);
+            }
+        }
+
+        // Create falling petals - ENHANCED VERSION FOR OVERLAY
+        function createPetals() {
+            // Create background petals (over entire screen)
+            createBackgroundPetals();
+            
+            // Create focused petals that specifically overlay the photo grid
+            createGridOverlayPetals();
+        }
+
+        function createBackgroundPetals() {
+            const backgroundPetalCount = 15;
+            
+            for (let i = 0; i < backgroundPetalCount; i++) {
+                const petal = document.createElement('div');
+                
+                // Random petal type for variety
+                const petalType = Math.random();
+                if (petalType < 0.3) {
+                    petal.className = 'petal round';
+                } else if (petalType < 0.6) {
+                    petal.className = 'petal heart';
+                } else {
+                    petal.className = 'petal';
+                }
+                
+                const size = Math.random() * 30 + 15;
+                const startPosition = Math.random() * 100;
+                const animationDuration = Math.random() * 25 + 20;
+                const animationDelay = Math.random() * 10;
+                
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size}px`;
+                petal.style.left = `${startPosition}%`;
+                petal.style.animationDuration = `${animationDuration}s`;
+                petal.style.animationDelay = `${animationDelay}s`;
+                
+                // Random pink/purple color with varying opacity
+                const hue = Math.random() * 40 + 310;
+                const opacity = Math.random() * 0.4 + 0.3;
+                petal.style.background = `linear-gradient(135deg, 
+                    hsla(${hue}, 100%, 85%, ${opacity}), 
+                    hsla(${hue}, 100%, 70%, ${opacity * 0.8}))`;
+                
+                petalsContainer.appendChild(petal);
+            }
+        }
+
+        // Create special petals that overlay the photo grid area
+        function createGridOverlayPetals() {
+            const gridPetalCount = 20; // More petals for the grid area
+            
+            for (let i = 0; i < gridPetalCount; i++) {
+                const petal = document.createElement('div');
+                
+                // Random petal shape
+                const petalType = Math.random();
+                if (petalType < 0.4) {
+                    petal.className = 'petal round';
+                } else if (petalType < 0.7) {
+                    petal.className = 'petal heart';
+                } else {
+                    petal.className = 'petal';
+                }
+                
+                // Size variation - some petals are larger for emphasis
+                const size = Math.random() * 35 + 20;
+                
+                // Start positions focused around the grid area
+                const startPosition = Math.random() * 100;
+                const animationDuration = Math.random() * 20 + 15;
+                const animationDelay = Math.random() * 15;
+                
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size}px`;
+                petal.style.left = `${startPosition}%`;
+                petal.style.animationDuration = `${animationDuration}s`;
+                petal.style.animationDelay = `${animationDelay}s`;
+                
+                // More vibrant colors for grid overlay petals
+                const hue = Math.random() * 30 + 320; // More pink tones
+                const opacity = Math.random() * 0.5 + 0.4; // More opaque
+                petal.style.background = `linear-gradient(135deg, 
+                    hsla(${hue}, 100%, 90%, ${opacity}), 
+                    hsla(${hue}, 100%, 75%, ${opacity * 0.9}))`;
+                
+                // Add slight horizontal movement for more natural feel
+                const horizontalMovement = Math.random() * 100 - 50;
+                
+                // Create custom animation for this petal
+                const animationName = `petalFall${i}`;
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes ${animationName} {
+                        0% {
+                            transform: translateX(0) rotate(45deg) translateY(-20px);
+                            opacity: 0;
+                        }
+                        10% {
+                            opacity: 1;
+                        }
+                        90% {
+                            opacity: 0.7;
+                        }
+                        100% {
+                            transform: translateX(${horizontalMovement}px) translateY(100vh) rotate(405deg);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                // Apply the custom animation
+                petal.style.animation = `${animationName} ${animationDuration}s linear ${animationDelay}s infinite`;
+                
+                gridPetalOverlay.appendChild(petal);
+            }
+        }
+
+        // Create Rolling Photo Grid with your actual images
+        function createPhotoGrid() {
+            // Clear existing content
+            photoGrid.innerHTML = '';
+            
+            // Create 20 photo cells (we'll duplicate them for seamless looping)
+            const totalCells = 20;
+            
+            // First create the original set with your images
+            for (let i = 0; i < totalCells; i++) {
+                createPhotoCell(i, false);
+            }
+            
+            // Then create the duplicate set for seamless looping
+            for (let i = 0; i < totalCells; i++) {
+                createPhotoCell(i, true);
+            }
+            
+            // Adjust animation based on screen size
+            adjustGridAnimation();
+        }
+
+        // Create individual photo cell with your images
+        function createPhotoCell(index, isDuplicate) {
+            const cell = document.createElement('div');
+            cell.className = 'photo-cell';
+            
+            // Add data attribute for animation delay
+            cell.style.setProperty('--i', index);
+            
+            // Use the actual image from your list
+            const imageIndex = index % memoryImages.length;
+            const imageName = memoryImages[imageIndex];
+            const label = memoryLabels[imageIndex];
+            
+            // Create image element
+            const img = document.createElement('img');
+            img.className = 'memory-image';
+            img.src = imageName;
+            img.alt = label;
+            img.title = label;
+            img.loading = 'lazy'; // Lazy load for better performance
+            
+            // Create loading overlay (will be removed when image loads)
+            const loadingOverlay = document.createElement('div');
+            loadingOverlay.className = 'image-loading';
+            loadingOverlay.textContent = label;
+            
+            // When image loads, remove the loading overlay
+            img.onload = () => {
+                if (loadingOverlay.parentNode === cell) {
+                    cell.removeChild(loadingOverlay);
+                }
+            };
+            
+            // If image fails to load, keep the loading overlay
+            img.onerror = () => {
+                console.warn(`Image failed to load: ${imageName}`);
+                loadingOverlay.textContent = `Memory ${imageIndex + 1}`;
+            };
+            
+            cell.appendChild(img);
+            cell.appendChild(loadingOverlay);
+            
+            // Add hover title
+            cell.title = label;
+            
+            photoGrid.appendChild(cell);
+        }
+
+        // Adjust grid animation based on screen size
+        function adjustGridAnimation() {
+            const grid = document.querySelector('.photo-grid');
+            
+            // Check screen width
+            if (window.innerWidth <= 768) {
+                // Mobile layout - 5 columns, 4 rows
+                grid.style.gridTemplateColumns = 'repeat(5, 1fr)';
+                grid.style.gridTemplateRows = 'repeat(4, 1fr)';
+                grid.style.width = '400%';
+            } else {
+                // Desktop layout - 10 columns, 2 rows
+                grid.style.gridTemplateColumns = 'repeat(10, 1fr)';
+                grid.style.gridTemplateRows = 'repeat(2, 1fr)';
+                grid.style.width = '200%';
+            }
+        }
+
+        // Transition to surprise page
+        function transitionToSurprisePage() {
+            // Add click effect to button
+            surpriseBtn.style.transform = 'scale(0.95)';
+            
+            // Hide entry page with animation
+            setTimeout(() => {
+                entryPage.classList.add('hidden');
+                
+                // Show surprise page after delay
+                setTimeout(() => {
+                    entryPage.style.display = 'none';
+                    surprisePage.style.display = 'flex';
+                    
+                    // Create all decorative elements
+                    createFloatingElements();
+                    createPetals();
+                    createPhotoGrid();
+                    
+                    // Start ambient animations
+                    startAmbientAnimations();
+                    
+                }, 800);
+            }, 300);
+        }
+
+        // Start ambient animations
+        function startAmbientAnimations() {
+            // Add continuous gentle movement to greeting
+            const greeting = document.querySelector('.greeting-container');
+            setInterval(() => {
+                greeting.style.transform = 'translateY(-3px)';
+                setTimeout(() => {
+                    greeting.style.transform = 'translateY(0)';
+                }, 1500);
+            }, 3000);
+            
+            // Create occasional extra petals for emphasis
+            setInterval(() => {
+                createEmphasisPetal();
+            }, 3000);
+        }
+
+        // Create occasional emphasis petals
+        function createEmphasisPetal() {
+            const emphasisPetal = document.createElement('div');
+            emphasisPetal.className = 'petal heart';
+            
+            // Large size for emphasis
+            const size = Math.random() * 40 + 30;
+            
+            // Position around grid area
+            const startPosition = Math.random() * 80 + 10;
+            
+            emphasisPetal.style.width = `${size}px`;
+            emphasisPetal.style.height = `${size}px`;
+            emphasisPetal.style.left = `${startPosition}%`;
+            emphasisPetal.style.animationDuration = `15s`;
+            emphasisPetal.style.animationDelay = `0s`;
+            
+            // Bright pink color
+            emphasisPetal.style.background = `linear-gradient(135deg, 
+                hsla(330, 100%, 85%, 0.7), 
+                hsla(330, 100%, 70%, 0.5))`;
+            
+            // Add to grid overlay
+            gridPetalOverlay.appendChild(emphasisPetal);
+            
+            // Remove after animation completes
+            setTimeout(() => {
+                if (emphasisPetal.parentNode) {
+                    emphasisPetal.parentNode.removeChild(emphasisPetal);
+                }
+            }, 15000);
+        }
+
+        // Handle window resize for responsive grid
+        window.addEventListener('resize', adjustGridAnimation);
+
+        // Event Listeners
+        surpriseBtn.addEventListener('click', transitionToSurprisePage);
+        
+        // Add keyboard support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                transitionToSurprisePage();
+            }
+        });
+
+        // Make button focusable for accessibility
+        surpriseBtn.setAttribute('tabindex', '0');
+
+        // Initial console message
+        console.log("🌸 Welcome to the Romantic Memory Video Surprise! 🌸");
+        console.log("Loading your beautiful memories for Angel...");
+        console.log("Images to load:", memoryImages.length);
+        console.log("Image types: JPG, JPEG, and WEBP files");
+    </script>
+</body>
+</html>
